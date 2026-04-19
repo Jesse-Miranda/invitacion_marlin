@@ -1,0 +1,124 @@
+:root {
+    --brillo-cinta: linear-gradient(to bottom, #d4af37 0%, #f9f4d2 50%, #aa8939 100%);
+}
+
+body, html {
+    margin: 0; padding: 0; height: 100%;
+    display: flex; justify-content: center; align-items: center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.fondo-pantalla {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('../assets/fondo.png'); 
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+/* ESCENARIO RESPONSIVE */
+.escenario {
+    perspective: 1500px;
+    width: 350px;
+    height: 550px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+@media (max-width: 400px) {
+    .escenario {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-height: 600px) {
+    .escenario {
+        transform: scale(0.7);
+    }
+}
+
+.tarjeta {
+    width: 350px; height: 550px;
+    position: relative;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    background-color: #000; 
+}
+
+.invitacion-base {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: url('../assets/invitacion-marlin.png'); 
+    background-size: cover; 
+    background-position: center;
+    z-index: 1;
+}
+
+.solapa-negra {
+    position: absolute;
+    top: 0; left: 0;
+    width: 50%; height: 100%;
+    background-color: #000;
+    background-image: url('../assets/image_8ea266.png'); 
+    background-size: cover;
+    background-position: left center;
+    z-index: 10;
+    transform-origin: left;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+}
+
+.capa-liston-completa {
+    position: absolute;
+    top: 45%; left: 0;
+    width: 100%; height: 100px;
+    z-index: 20;
+    transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+}
+
+.cinta-horizontal {
+    position: absolute;
+    width: 100%; height: 18px;
+    background: var(--brillo-cinta);
+    z-index: 21;
+}
+
+.mono-contenedor {
+    position: absolute;
+    left: 25%;
+    transform: translateX(-50%);
+    width: 60%;
+    z-index: 25;
+}
+
+.mono-img {
+    width: 100%; height: auto;
+    filter: drop-shadow(0px 4px 6px rgba(0,0,0,0.5));
+}
+
+.remover-todo {
+    transform: translateX(-150%) rotate(-5deg);
+    opacity: 0;
+}
+
+.tarjeta.abierta .solapa-negra {
+    transform: rotateY(-115deg);
+}
+
+.instruccion {
+    position: absolute; bottom: -40px; color: black;
+    font-size: 0.8em; text-align: center; width: 100%;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px black;
+}
